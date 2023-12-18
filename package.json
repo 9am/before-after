@@ -1,0 +1,55 @@
+{
+  "name": "@9am/before-after",
+  "version": "1.0.0",
+  "description": "A simple web component shows a before-after comparison.",
+  "keywords": [
+    "web component",
+    "custom element",
+    "before",
+    "after",
+    "before-after",
+    "slide",
+    "comparation"
+  ],
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/index.es.js",
+  "main": "./dist/index.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "default": "./dist/index.es.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "prettier": "prettier --check ."
+  },
+  "devDependencies": {
+    "postcss": "^8.4.32",
+    "postcss-nesting": "^12.0.2",
+    "prettier": "^2.8.8",
+    "vite": "^4.5.0",
+    "vite-plugin-banner": "^0.7.1"
+  },
+  "author": {
+    "name": "9am",
+    "email": "tech.9am@gmail.com",
+    "url": "https://9am.github.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/9am/before-after"
+  },
+  "homepage": "https://github.com/9am/before-after#readme",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT"
+}

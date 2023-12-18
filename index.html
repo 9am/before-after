@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>before-after</title>
+    <style>
+        body {
+            display: grid;
+            gap: 2em;
+            padding: 2em;
+        }
+        section {
+            padding: 2em;
+        }
+        [slot=before] {
+            background: rgba(255 0 0 / .1);
+        }
+        [slot=after] {
+            background: rgba(0 0 255 / .1);
+            -webkit-text-stroke: 1px white;
+            text-shadow: 1px 1px 5px black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <before-after>
+        <section slot="before">
+            <h1>BEFORE</h1>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+        </section>
+        <section slot="after">
+            <h1>AFTER</h1>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+        </section>
+    </before-after>
+    <before-after orient="vertical" value="66">
+        <section slot="before">
+            <h1>BEFORE</h1>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+        </section>
+        <section slot="after">
+            <h1>AFTER</h1>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+        </section>
+    </before-after>
+    <!--
+    <script type="module" src="/src/index.js"></script>
+    -->
+
+    <script src="/dist/index.min.js"></script>
+</body>
+</html>

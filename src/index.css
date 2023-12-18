@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    ::before,
+    ::after {
+        box-sizing: border-box;
+    }
+}
+
+:host {
+    --thumb-size: 2px;
+    --thumb-bg: white;
+
+    --val: 0;
+    --p: calc(var(--val) * 1%);
+    display: grid;
+    position: relative;
+    outline: 1px solid;
+    overflow: hidden;
+    &::before {
+        content: 'thumb';
+        font-size: 0;
+        position: absolute;
+        top: 0;
+        left: var(--p);
+        width: var(--thumb-size);
+        height: 100%;
+        background: var(--thumb-bg);
+        transform: translateX(-50%);
+        filter: drop-shadow(0px 0px 1px black); 
+    }
+}
+:host(:hover) {
+    &::before {
+        filter: drop-shadow(0px 0px 2px black); 
+    }
+}
+
+#range,
+::slotted([slot=before]),
+::slotted([slot=after]) {
+    grid-area: 1 / 1;
+}
+
+#range {
+    z-index: 1;
+    opacity: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: ew-resize;
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 0px;
+      height: 0px;
+    }
+  }
+
+::slotted(*) {
+    --a: 0 0;
+    --b: 100% 0;
+    --c: 100% 100%;
+    --d: 0 100%;
+}
+
+::slotted([slot=before]) {
+    clip-path: polygon(var(--p) 0, var(--p) 100%, var(--d), var(--a));
+}
+
+::slotted([slot=after]) {
+    clip-path: polygon(var(--p) 0, var(--p) 100%, var(--c), var(--b));
+}
+
+:host([orient=vertical]) {
+    &::before {
+        top: var(--p);
+        left: 0;
+        width: 100%;
+        height: var(--thumb-size);
+        transform: translateY(-50%);
+    }
+    #range[orient=vertical] {
+        appearance: slider-vertical;
+        /*
+        writing-mode: vertical-lr;
+        */
+        cursor: ns-resize;
+        transform: rotate(0.5turn);
+    }
+    ::slotted([slot=before]) {
+        clip-path: polygon(0 var(--p), 100% var(--p), var(--b), var(--a));
+    }
+
+    ::slotted([slot=after]) {
+        clip-path: polygon(0 var(--p), 100% var(--p), var(--c), var(--d));
+    }
+}

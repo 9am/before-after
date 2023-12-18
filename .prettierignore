@@ -1,0 +1,14 @@
+**/node_modules
+**/dist
+*.tgz
+*.log
+*.swp
+*.html
+*.json
+*.md
+*.yml
+*.yaml
+.*ignore
+.DS_Store
+.github
+coverage
