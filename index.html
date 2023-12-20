@@ -10,6 +10,7 @@
             padding: 2em;
         }
         section {
+            text-align: center;
             padding: 2em;
         }
         [slot=before] {
@@ -20,6 +21,23 @@
             -webkit-text-stroke: 1px white;
             text-shadow: 1px 1px 5px black;
             color: white;
+        }
+
+        @property --val {
+            syntax: "<number>";
+            inherits: false;
+            initial-value: 0;
+        }
+        before-after.animated {
+            animation: 4s ease-in-out 1s infinite alternate demo;
+        }
+        @keyframes demo {
+            from {
+                --val: 100;
+            }
+            to {
+                --val: 0;
+            }
         }
     </style>
 </head>
@@ -37,17 +55,23 @@
     <before-after orient="vertical" value="66">
         <section slot="before">
             <h1>BEFORE</h1>
-            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+            <p>This demo shows a vertical oriented version with a default value.</p>
         </section>
         <section slot="after">
             <h1>AFTER</h1>
-            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
+            <p>This demo shows a vertical oriented version with a default value.</p>
         </section>
     </before-after>
-    <!--
+    <before-after class="animated">
+        <section slot="before">
+            <h1>BEFORE</h1>
+            <p>This demo shows how to make a animated version.</p>
+        </section>
+        <section slot="after">
+            <h1>AFTER</h1>
+            <p>This demo shows how to make a animated version.</p>
+        </section>
+    </before-after>
     <script type="module" src="/src/index.js"></script>
-    -->
-
-    <script src="/dist/index.min.js"></script>
 </body>
 </html>

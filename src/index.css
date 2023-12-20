@@ -7,9 +7,6 @@
 }
 
 :host {
-    --thumb-size: 2px;
-    --thumb-bg: white;
-
     --val: 0;
     --p: calc(var(--val) * 1%);
     display: grid;
@@ -17,6 +14,7 @@
     outline: 1px solid;
     overflow: hidden;
     &::before {
+        --thumb-size: 2px;
         content: 'thumb';
         font-size: 0;
         position: absolute;
@@ -24,7 +22,7 @@
         left: var(--p);
         width: var(--thumb-size);
         height: 100%;
-        background: var(--thumb-bg);
+        background: white;
         transform: translateX(-50%);
         filter: drop-shadow(0px 0px 1px black); 
     }
@@ -84,9 +82,6 @@
     }
     #range[orient=vertical] {
         appearance: slider-vertical;
-        /*
-        writing-mode: vertical-lr;
-        */
         cursor: ns-resize;
         transform: rotate(0.5turn);
     }
