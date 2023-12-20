@@ -1,7 +1,6 @@
 <div align="center">
-    <img src="" alt="before-after-logo" width="140" height="140" />
     <h1>&lt;before-after&gt;</h1>
-	<p>A simple web component shows a before-after comparison.</p>
+	<p>A small Web Component shows a before-after comparison. 🌓</p>
     <p>
         <a href="https://github.com/9am/before-after/blob/main/LICENSE">
             <img alt="GitHub" src="https://img.shields.io/github/license/9am/before-after?style=flat-square&color=success">
@@ -19,13 +18,19 @@
 </div>
 
 
-## Features
-
 ## Demo
+
+Go to the [Home page](https://9am.github.io/before-after/).
 
 ## Usage
 
-#### Install
+Include the script to your page
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@9am/before-after/dist/index.min.js"></script>
+```
+
+Or install via npm
 
 ```sh
 npm install @9am/before-after 
@@ -34,8 +39,6 @@ npm install @9am/before-after
 #### HTML
 
 ```html
-<script src="xxxxxxx/index.min.js"></script>
-
 <before-after>
     <section slot="before">
         <h1>BEFORE</h1>
@@ -47,6 +50,13 @@ npm install @9am/before-after
 ```
 
 ## Documentation
+
+### Attributes
+
+|Name|Type|Default|Description|
+|:--:|:--:|:-----:|:----------|
+|`orient`|'horizontal' \| 'vertical'|'horizontal'|The orientation|
+|`value`|number|50|The position of the thumb bar (0-100)|
 
 ## License
 [MIT](LICENSE)

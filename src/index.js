@@ -1,8 +1,8 @@
 import css from './index.css?inline';
 
-export class BeforeAfter extends HTMLElement {
+class BeforeAfter extends HTMLElement {
     static get observedAttributes() {
-        return ['orient'];
+        return ['orient', 'value'];
     }
 
     #input = null;
@@ -40,6 +40,14 @@ export class BeforeAfter extends HTMLElement {
                 this.#input?.setAttribute('orient', next);
                 break;
             }
+            case 'value': {
+                this.value = next;
+                this.#input.value = next;
+                this.#input.dispatchEvent(new InputEvent('input'));
+                break;
+            }
+            default:
+                break;
         }
     }
 
@@ -73,8 +81,9 @@ export class BeforeAfter extends HTMLElement {
     }
 }
 
-if (!window.customElements.get('before-after')) {
+if (window && !window.customElements.get('before-after')) {
     window.customElements.define('before-after', BeforeAfter);
 }
 
+export { BeforeAfter };
 export default null;

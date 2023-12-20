@@ -1,7 +1,7 @@
 {
   "name": "@9am/before-after",
   "version": "1.0.0",
-  "description": "A simple web component shows a before-after comparison.",
+  "description": "A small Web Component shows a before-after comparison.",
   "keywords": [
     "web component",
     "custom element",
@@ -9,7 +9,7 @@
     "after",
     "before-after",
     "slide",
-    "comparation"
+    "comparison"
   ],
   "files": [
     "dist"
@@ -21,7 +21,7 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
-      "default": "./dist/index.es.js"
+      "default": "./dist/index.min.js"
     }
   },
   "scripts": {
@@ -45,7 +45,7 @@
     "type": "git",
     "url": "https://github.com/9am/before-after"
   },
-  "homepage": "https://github.com/9am/before-after#readme",
+  "homepage": "https://9am.github.io/before-after/",
   "private": false,
   "publishConfig": {
     "access": "public",

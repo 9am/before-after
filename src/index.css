@@ -11,8 +11,7 @@
     --p: calc(var(--val) * 1%);
     display: grid;
     position: relative;
-    outline: 1px solid;
-    overflow: hidden;
+    overflow: visible;
     &::before {
         --thumb-size: 2px;
         content: 'thumb';
