@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="https://raw.githubusercontent.com/9am/before-after/main/logo.svg" alt="before-after-logo" width="140" height="140" />
     <h1>&lt;before-after&gt;</h1>
 	<p>A small Web Component shows a before-after comparison. 🌓</p>
     <p>

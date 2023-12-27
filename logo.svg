@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="128px">
+  <style>
+    * {
+      font: 1px Verdana, monospace;
+    }
+  </style>
+  <defs>
+    <path
+      id="yan"
+      d="M 5,10 a 2.5 2.5 180 0 1 0,-5 a 2.5 2.5 180 0 0 0,-5 a 5 5 180 0 0 0,10 Z"
+    />
+    <path
+      id="yin"
+      d="M 5,0 a 2.5 2.5 180 0 1 0,5 a 2.5 2.5 180 0 0 0,5 a 5 5 180 0 0 0,-10 Z"
+    />
+    <clipPath id="clip-yan">
+      <use href="#yan" />
+    </clipPath>
+    <clipPath id="clip-yin">
+      <use href="#yin" />
+    </clipPath>
+    <mask id="mask-yan">
+      <use href="#yan" fill="black" />
+      <text clip-path="url(#clip-yan)" fill="white">
+        <textPath href="#yan" startOffset="3.5">
+          BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+        </textPath>
+      </text>
+    </mask>
+    <mask id="mask-yin">
+      <use href="#yin" fill="white" />
+      <text clip-path="url(#clip-yin)" fill="black">
+        <textPath href="#yin" startOffset="3.5">
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        </textPath>
+      </text>
+    </mask>
+  </defs>
+  <use href="#yan" mask="url(#mask-yan)" />
+  <use href="#yin" mask="url(#mask-yin)" />
+</svg>
