@@ -22,10 +22,10 @@
             outline: 1px solid;
         }
         [slot=before] {
-            background: rgba(255 0 0 / .1);
+            background: rgba(0 0 0 / .05);
         }
         [slot=after] {
-            background: rgba(0 0 255 / .1);
+            background: rgba(0 0 0 / .7);
             -webkit-text-stroke: 1px white;
             text-shadow: 1px 1px 5px black;
             color: white;
@@ -50,47 +50,74 @@
     </style>
 </head>
 <body>
-    <h1>&lt; before-after &gt;</h1>
+    <a href="https://github.com/9am/before-after"><img src="./logo.svg" alt="before-after-logo" title="before-after-logo" width="140px" /></a>
+    <h1><code>&lt;before-after&gt;</code></h1>
     <before-after>
         <section slot="before">
             <h2>BEFORE</h2>
-            <pre>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</pre>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
         </section>
         <section slot="after">
             <h2>AFTER</h2>
-            <pre>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</pre>
+            <p>This demo shows what &lt;before-after&gt; can do. Drag the thumb bar to see the difference.</p>
         </section>
     </before-after>
-    <before-after orient="vertical" value="66">
+    <before-after orient="vertical" value="57">
         <section slot="before">
             <h2>BEFORE</h2>
-            <pre>This demo shows a vertical oriented version with a default value.</pre>
+            <p>This demo shows a vertical oriented version with a default value.</p>
+            <pre>&lt;before-after orient="vertical" value="57"&gt;</pre>
         </section>
         <section slot="after">
             <h2>AFTER</h2>
-            <pre>This demo shows a vertical oriented version with a default value.</pre>
+            <p>This demo shows a vertical oriented version with a default value.</p>
+            <pre>&lt;before-after orient="vertical" value="57"&gt;</pre>
+        </section>
+    </before-after>
+    <before-after varient="radial" style="--position: circle at 30% 40%" value="25">
+        <section slot="before">
+            <h2>BEFORE</h2>
+            <p>A radial varient with position description.</p>
+            <pre>&lt;before-after varient="radial" style="--position: circle at 30% 40%" value="25"&gt;</pre>
+        </section>
+        <section slot="after">
+            <h2>AFTER</h2>
+            <p>A radial varient with position description.</p>
+            <pre>&lt;before-after varient="radial" style="--position: circle at 30% 40%" value="25"&gt;</pre>
+        </section>
+    </before-after>
+    <before-after varient="radial" orient="vertical">
+        <section slot="before">
+            <h2>BEFORE</h2>
+            <p>A vertical version of radial varient.</p>
+            <pre>&lt;before-after varient="radial" orient="vertical"&gt;</pre>
+        </section>
+        <section slot="after">
+            <h2>AFTER</h2>
+            <p>A vertical version of radial varient.</p>
+            <pre>&lt;before-after varient="radial" orient="vertical"&gt;</pre>
         </section>
     </before-after>
     <before-after class="animated">
         <section slot="before">
             <h2>BEFORE</h2>
-            <pre>This demo shows how to make a animated version.</pre>
+            <p>This demo shows how to make a animated version.</p>
         </section>
         <section slot="after">
             <h2>AFTER</h2>
-            <pre>This demo shows how to make a animated version.</pre>
+            <p>This demo shows how to make a animated version.</p>
         </section>
     </before-after>
     <before-after class="controlled">
         <section slot="before">
             <h2>BEFORE</h2>
-            <pre>This demo shows how to make it controlled by a outside &lt;input&gt;.</pre>
-            <pre>Drag the slider below to see the difference.</pre>
+            <p>This demo shows how to make it controlled by a outside &lt;input&gt;.</p>
+            <p>Drag the slider below to see the difference.</p>
         </section>
         <section slot="after">
             <h2>AFTER</h2>
-            <pre>This demo shows how to make it controlled by a outside &lt;input&gt;.</pre>
-            <pre>Drag the slider below to see the difference.</pre>
+            <p>This demo shows how to make it controlled by a outside &lt;input&gt;.</p>
+            <p>Drag the slider below to see the difference.</p>
         </section>
     </before-after>
     <input type="range" step="any" />
@@ -108,6 +135,9 @@
             ba.value = evt.target.value;
         });;
     </script>
+    <script type="module" src="./src/index.js"></script>
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/@9am/before-after/dist/index.min.js"></script>
+    -->
 </body>
 </html>

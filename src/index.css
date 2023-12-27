@@ -7,6 +7,7 @@
 }
 
 :host {
+    --position: to right;
     --val: 0;
     --p: calc(var(--val) * 1%);
     display: grid;
@@ -18,17 +19,23 @@
         font-size: 0;
         position: absolute;
         top: 0;
-        left: var(--p);
-        width: var(--thumb-size);
+        left: 0;
+        width: 100%;
         height: 100%;
-        background: white;
-        transform: translateX(-50%);
-        filter: drop-shadow(0px 0px 1px black); 
+        filter: drop-shadow(0px 0px 1px black);
+        background: linear-gradient(
+            var(--position),
+            #0000 0,
+            calc(var(--p) - var(--thumb-size) / 2),
+            white calc(var(--p) - var(--thumb-size) / 2),
+            white calc(var(--p) + var(--thumb-size) / 2),
+            #0000 calc(var(--p) + var(--thumb-size) / 2)
+        );
     }
 }
 :host(:hover) {
     &::before {
-        filter: drop-shadow(0px 0px 2px black); 
+        filter: drop-shadow(0px 0px 2px black);
     }
 }
 
@@ -56,39 +63,40 @@
     }
   }
 
-::slotted(*) {
-    --a: 0 0;
-    --b: 100% 0;
-    --c: 100% 100%;
-    --d: 0 100%;
-}
-
 ::slotted([slot=before]) {
-    clip-path: polygon(var(--p) 0, var(--p) 100%, var(--d), var(--a));
+    mask: linear-gradient(var(--position), white 0, var(--p), #0000 0);
 }
 
 ::slotted([slot=after]) {
-    clip-path: polygon(var(--p) 0, var(--p) 100%, var(--c), var(--b));
+    mask: linear-gradient(var(--position), #0000 0, var(--p), white 0);
 }
 
 :host([orient=vertical]) {
-    &::before {
-        top: var(--p);
-        left: 0;
-        width: 100%;
-        height: var(--thumb-size);
-        transform: translateY(-50%);
-    }
+    --position: to bottom;
     #range[orient=vertical] {
         appearance: slider-vertical;
         cursor: ns-resize;
         transform: rotate(0.5turn);
     }
+}
+
+:host([varient=radial]) {
+    --position: circle at center;
+    &::before {
+        background: radial-gradient(
+            var(--position),
+            #0000 0,
+            calc(var(--p) - var(--thumb-size) / 2),
+            white calc(var(--p) - var(--thumb-size) / 2),
+            white calc(var(--p) + var(--thumb-size) / 2),
+            #0000 calc(var(--p) + var(--thumb-size) / 2)
+        );
+    }
     ::slotted([slot=before]) {
-        clip-path: polygon(0 var(--p), 100% var(--p), var(--b), var(--a));
+        mask: radial-gradient(var(--position), white 0, var(--p), #0000 0);
     }
 
     ::slotted([slot=after]) {
-        clip-path: polygon(0 var(--p), 100% var(--p), var(--c), var(--d));
+        mask: radial-gradient(var(--position), #0000 0, var(--p), white 0);
     }
 }
