@@ -98,6 +98,30 @@
             <pre>&lt;before-after varient="radial" orient="vertical"&gt;</pre>
         </section>
     </before-after>
+    <before-after varient="conic" style="--position: from 0.2turn at 30% 40%" value="25">
+        <section slot="before">
+            <h2>BEFORE</h2>
+            <p>A conic varient with position description.</p>
+            <pre>&lt;before-after varient="conic" style="--position: from 0.2turn at 30% 40%" value="25"&gt;</pre>
+        </section>
+        <section slot="after">
+            <h2>AFTER</h2>
+            <p>A conic varient with position description.</p>
+            <pre>&lt;before-after varient="conic" style="--position: from 0.2turn at 30% 40%" value="25"&gt;</pre>
+        </section>
+    </before-after>
+    <before-after varient="conic" orient="vertical" value="30">
+        <section slot="before">
+            <h2>BEFORE</h2>
+            <p>A vertical version of conic varient.</p>
+            <pre>&lt;before-after varient="conic" orient="vertical" value="30"&gt;</pre>
+        </section>
+        <section slot="after">
+            <h2>AFTER</h2>
+            <p>A vertical version of conic varient.</p>
+            <pre>&lt;before-after varient="conic" orient="vertical" value="30"&gt;</pre>
+        </section>
+    </before-after>
     <before-after class="animated">
         <section slot="before">
             <h2>BEFORE</h2>
@@ -129,6 +153,9 @@
         </svg>
     </a>
     <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <footer>
+        <pre>Made by <a href="//9am.github.io/">@9am</a></pre>
+    </footer>
     <script type="module">
         const ba = document.querySelector('before-after.controlled');
         document.querySelector('input').addEventListener('input', (evt) => {

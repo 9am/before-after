@@ -56,8 +56,8 @@ npm install @9am/before-after
 
 |Name|Type|Default|Description|
 |:--:|:--:|:-----:|:----------|
+|`varient`|'linear' \| 'radial' \| 'conic'|'linear'|The varient|
 |`orient`|'horizontal' \| 'vertical'|'horizontal'|The orientation|
-|`varient`|'linear' \| 'radial'|'linear'|The varient|
 |`value`|number|50|The position of the thumb bar (0-100)|
 
 ## License
