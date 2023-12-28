@@ -28,7 +28,7 @@ Go to the [Home page](https://9am.github.io/before-after/).
 Include the script to your page
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@9am/before-after/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@9am/before-after@latest/dist/index.min.js"></script>
 ```
 
 Or install via npm
