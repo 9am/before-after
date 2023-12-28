@@ -8,13 +8,21 @@
 
 :host {
     --position: to right;
+    --thumb-size: 2px;
+    --thumb-color: white;
     --val: 0;
     --p: calc(var(--val) * 1%);
     display: grid;
     position: relative;
     overflow: visible;
     &::before {
-        --thumb-size: 2px;
+        --thumb-size-hf: calc(var(--thumb-size) / 2);
+        --thumb-gradient: var(--position),
+            #0000 0,
+            calc(var(--p) - var(--thumb-size-hf)),
+            var(--thumb-color) calc(var(--p) - var(--thumb-size-hf)),
+            var(--thumb-color) calc(var(--p) + var(--thumb-size-hf)),
+            #0000 calc(var(--p) + var(--thumb-size-hf));
         content: 'thumb';
         font-size: 0;
         position: absolute;
@@ -23,20 +31,18 @@
         width: 100%;
         height: 100%;
         filter: drop-shadow(0px 0px 1px black);
-        background: linear-gradient(
-            var(--position),
-            #0000 0,
-            calc(var(--p) - var(--thumb-size) / 2),
-            white calc(var(--p) - var(--thumb-size) / 2),
-            white calc(var(--p) + var(--thumb-size) / 2),
-            #0000 calc(var(--p) + var(--thumb-size) / 2)
-        );
+        background: linear-gradient(var(--thumb-gradient));
     }
 }
 :host(:hover) {
     &::before {
         filter: drop-shadow(0px 0px 2px black);
     }
+}
+
+::slotted(*) {
+    --before-mask: var(--position), #000 0, var(--p), #0000 0;
+    --after-mask: var(--position), #0000 0, var(--p), #000 0;
 }
 
 #range,
@@ -64,11 +70,11 @@
   }
 
 ::slotted([slot=before]) {
-    mask: linear-gradient(var(--position), white 0, var(--p), #0000 0);
+    mask: linear-gradient(var(--before-mask));
 }
 
 ::slotted([slot=after]) {
-    mask: linear-gradient(var(--position), #0000 0, var(--p), white 0);
+    mask: linear-gradient(var(--after-mask));
 }
 
 :host([orient=vertical]) {
@@ -83,20 +89,13 @@
 :host([varient=radial]) {
     --position: circle at center;
     &::before {
-        background: radial-gradient(
-            var(--position),
-            #0000 0,
-            calc(var(--p) - var(--thumb-size) / 2),
-            white calc(var(--p) - var(--thumb-size) / 2),
-            white calc(var(--p) + var(--thumb-size) / 2),
-            #0000 calc(var(--p) + var(--thumb-size) / 2)
-        );
+        background: radial-gradient(var(--thumb-gradient));
     }
     ::slotted([slot=before]) {
-        mask: radial-gradient(var(--position), white 0, var(--p), #0000 0);
+        mask: radial-gradient(var(--before-mask));
     }
 
     ::slotted([slot=after]) {
-        mask: radial-gradient(var(--position), #0000 0, var(--p), white 0);
+        mask: radial-gradient(var(--after-mask));
     }
 }

@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="128px">
   <style>
-    * {
-      font: 1px Verdana, monospace;
-    }
+    * { font: 1px Verdana, monospace; }
   </style>
   <defs>
     <path
       id="yan"
       d="M 5,10 a 2.5 2.5 180 0 1 0,-5 a 2.5 2.5 180 0 0 0,-5 a 5 5 180 0 0 0,10 Z"
+      stroke-width=".2"
     />
     <path
       id="yin"
       d="M 5,0 a 2.5 2.5 180 0 1 0,5 a 2.5 2.5 180 0 0 0,5 a 5 5 180 0 0 0,-10 Z"
+      stroke-width=".2"
     />
     <clipPath id="clip-yan">
       <use href="#yan" />
@@ -20,18 +20,18 @@
       <use href="#yin" />
     </clipPath>
     <mask id="mask-yan">
-      <use href="#yan" fill="black" />
+      <use href="#yan" fill="black" stroke="black" />
       <text clip-path="url(#clip-yan)" fill="white">
         <textPath href="#yan" startOffset="3.5">
-          BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+          <tspan dy="0">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</tspan>
         </textPath>
       </text>
     </mask>
     <mask id="mask-yin">
-      <use href="#yin" fill="white" />
+      <use href="#yin" fill="white" stroke="black" />
       <text clip-path="url(#clip-yin)" fill="black">
         <textPath href="#yin" startOffset="3.5">
-          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          <tspan dy="-.1">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</tspan>
         </textPath>
       </text>
     </mask>
