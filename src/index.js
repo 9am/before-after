@@ -24,7 +24,7 @@ class BeforeAfter extends HTMLElement {
         const template = document.createElement('template');
         template.innerHTML = `
     <style>${css}</style>
-    <input type="range" value=${value} orient="${orient}" step="any" id="range" part="range"  />
+    <input type="range" id="range" part="range" orient="${orient}" value=${value} min="0" max="100" step="any"  />
     <slot name="before"></slot>
     <slot name="after"></slot>
 `;

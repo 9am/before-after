@@ -8,19 +8,22 @@
 
 :host {
     --position: to right;
-    --thumb-size: 2px;
+    --repeat: 1;
+    --thumb-size: 1px;
     --thumb-color: white;
     --val: 0;
-    --p: calc(var(--val) * 1%);
+    --p: calc(var(--val) / var(--repeat) * 1%);
     display: grid;
     position: relative;
     overflow: visible;
     &::after {
         --thumb-size-hf: calc(var(--thumb-size) / 2);
         --thumb-gradient: var(--position),
-            #0000 calc(var(--p) - var(--thumb-size-hf)),
+            #0000 0 calc(var(--p) - var(--thumb-size-hf)),
             var(--thumb-color) calc(var(--p) - var(--thumb-size-hf)) calc(var(--p) + var(--thumb-size-hf)),
-            #0000 calc(var(--p) + var(--thumb-size-hf));
+            #0000 0 calc(100% / var(--repeat));
+        /* hide thumb if(0 || 100) */
+        --thumb-opacity: calc(var(--val) * (100 - var(--val)));
         content: 'thumb';
         font-size: 0;
         position: absolute;
@@ -29,8 +32,9 @@
         width: 100%;
         height: 100%;
         filter: drop-shadow(0px 0px 1px black);
-        background: linear-gradient(var(--thumb-gradient));
+        background-image: linear-gradient(var(--thumb-gradient));
         pointer-events: none;
+        opacity: var(--thumb-opacity);
     }
 }
 :host(:hover) {
@@ -40,8 +44,8 @@
 }
 
 ::slotted(*) {
-    --before-mask: var(--position), #000 0, var(--p), #0000 0;
-    --after-mask: var(--position), #0000 0, var(--p), #000 0;
+    --before-mask: var(--position), #0000 0, var(--p), #000 0 calc(100% / var(--repeat));
+    --after-mask: var(--position), #000 0, var(--p), #0000 0 calc(100% / var(--repeat));
 }
 
 #range,
@@ -61,12 +65,16 @@
         outline: none;
     }
     &::-webkit-slider-thumb {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 0px;
-      height: 0px;
+        appearance: none;
+        -webkit-appearance: none;
+        width: 0px;
+        height: 0px;
     }
-  }
+}
+
+#check:invalid {
+    color: red;
+}
 
 ::slotted([slot=before]) {
     mask: linear-gradient(var(--before-mask));
@@ -84,9 +92,22 @@
         transform: rotate(0.5turn);
     }
 }
+:host(:not([varient*=repeating])) {
+    --repeat: 1 !important;
+}
+:host([varient*=repeating]) {
+    --repeat: 6;
+}
+:host([varient*=radial]) {
+    --position: circle at center;
+}
+:host([varient*=conic]) {
+    --position: at center;
+    --thumb-size: .2deg;
+    --p: calc(var(--val) / var(--repeat) * .01turn);
+}
 
 :host([varient=radial]) {
-    --position: circle at center;
     &::after {
         background: radial-gradient(var(--thumb-gradient));
     }
@@ -100,9 +121,6 @@
 }
 
 :host([varient=conic]) {
-    --thumb-size: 0deg;
-    --position: at center;
-    --p: calc(var(--val) * 0.01turn);
     &::after {
         background: conic-gradient(var(--thumb-gradient));
     }
@@ -112,5 +130,44 @@
 
     ::slotted([slot=after]) {
         mask: conic-gradient(var(--after-mask));
+    }
+}
+
+:host([varient=repeating-linear]) {
+    &::after {
+        background: repeating-linear-gradient(var(--thumb-gradient));
+    }
+    ::slotted([slot=before]) {
+        mask: repeating-linear-gradient(var(--before-mask));
+    }
+
+    ::slotted([slot=after]) {
+        mask: repeating-linear-gradient(var(--after-mask));
+    }
+}
+
+:host([varient=repeating-radial]) {
+    &::after {
+        background: repeating-radial-gradient(var(--thumb-gradient));
+    }
+    ::slotted([slot=before]) {
+        mask: repeating-radial-gradient(var(--before-mask));
+    }
+
+    ::slotted([slot=after]) {
+        mask: repeating-radial-gradient(var(--after-mask));
+    }
+}
+
+:host([varient=repeating-conic]) {
+    &::after {
+        background: repeating-conic-gradient(var(--thumb-gradient));
+    }
+    ::slotted([slot=before]) {
+        mask: repeating-conic-gradient(var(--before-mask));
+    }
+
+    ::slotted([slot=after]) {
+        mask: repeating-conic-gradient(var(--after-mask));
     }
 }
