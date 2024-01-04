@@ -43,17 +43,11 @@
     }
 }
 
-::slotted(*) {
-    --before-mask: var(--position), #0000 0, var(--p), #000 0 calc(100% / var(--repeat));
-    --after-mask: var(--position), #000 0, var(--p), #0000 0 calc(100% / var(--repeat));
-}
-
 #range,
 ::slotted([slot=before]),
 ::slotted([slot=after]) {
     grid-area: 1 / 1;
 }
-
 #range {
     z-index: 1;
     opacity: 0;
@@ -72,10 +66,13 @@
     }
 }
 
+::slotted(*) {
+    --before-mask: var(--position), #0000 0, var(--p), #000 0 calc(100% / var(--repeat));
+    --after-mask: var(--position), #000 0, var(--p), #0000 0 calc(100% / var(--repeat));
+}
 ::slotted([slot=before]) {
     mask: linear-gradient(var(--before-mask));
 }
-
 ::slotted([slot=after]) {
     mask: linear-gradient(var(--after-mask));
 }
@@ -115,7 +112,6 @@
         mask: radial-gradient(var(--after-mask));
     }
 }
-
 :host([varient=conic]) {
     &::after {
         background: conic-gradient(var(--thumb-gradient));
@@ -128,7 +124,6 @@
         mask: conic-gradient(var(--after-mask));
     }
 }
-
 :host([varient=repeating-linear]) {
     &::after {
         background: repeating-linear-gradient(var(--thumb-gradient));
@@ -141,7 +136,6 @@
         mask: repeating-linear-gradient(var(--after-mask));
     }
 }
-
 :host([varient=repeating-radial]) {
     &::after {
         background: repeating-radial-gradient(var(--thumb-gradient));
@@ -154,7 +148,6 @@
         mask: repeating-radial-gradient(var(--after-mask));
     }
 }
-
 :host([varient=repeating-conic]) {
     &::after {
         background: repeating-conic-gradient(var(--thumb-gradient));
