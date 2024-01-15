@@ -57,7 +57,6 @@ class BeforeAfter extends HTMLElement {
 
     disconnectedCallback() {
         this.#input?.removeEventListener('input', this.#onInput);
-        this.#input = null;
     }
 
     #onInput = () => {
