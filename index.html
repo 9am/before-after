@@ -59,11 +59,11 @@
                 --val: 100;
             }
         }
-        before-after.toogle {
+        before-after.toggle {
             animation: .5s ease normal both before;
             animation-composition: add;
         }
-        before-after.toogle:has( + input:checked) {
+        before-after.toggle:has( + input:checked) {
             animation: .5s ease normal both after;
         }
     </style>
@@ -199,16 +199,16 @@
         </section>
     </before-after>
     <fieldset>
-        <legend>Toogle</legend>
-        <before-after class="toogle" varient="repeating-linear" value="0" style="--position: 45deg; --repeat: 10">
+        <legend>Toggle</legend>
+        <before-after class="toggle" varient="repeating-linear" value="0" style="--position: 45deg; --repeat: 10">
             <section slot="before">
                 <h2>BEFORE</h2>
-                <p>This demo shows how to toogle before-after.</p>
+                <p>This demo shows how to toggle before-after.</p>
                 <p>Click the checkbox below to see the difference.</p>
             </section>
             <section slot="after">
                 <h2>AFTER</h2>
-                <p>This demo shows how to toogle before-after.</p>
+                <p>This demo shows how to toggle before-after.</p>
                 <p>Click the checkbox below to see the difference.</p>
             </section>
         </before-after>
